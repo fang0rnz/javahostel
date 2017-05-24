@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/resources/decorator.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title">Registration</ui:define>
+
+	<ui:define name="contents">
+
+
+		<h:panelGroup rendered="#{!registrationController.userAuthenticated}">
+		<h1>Registration</h1>
+		<p>e ae men coloca ai suas info.</p>
+		<f:view>
+			<h:form id="regForm">
+				<table>
+					<tr>
+						<td><h:outputText value="Enter Your Name:" /></td>
+						<td><h:inputText id="name" pt:placeholder="E AI PARÇA"
+								value="#{registrationController.guest.name}" required="true"
+								requiredMessage="Please enter your name" /></td>
+						<td><h:message for="name" style="color:red" /></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Enter Your email:" /></td>
+						<td><h:inputText id="email"
+								value="#{registrationController.guest.email}" required="true"
+								requiredMessage="Please enter your email id" /></td>
+						<td><h:message for="email" style="color:red" /></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Enter Birth Date:" /></td>
+						<td><h:inputText id="birthDate"
+								value="#{registrationController.guest.birthDate}" size="10"
+								required="true" pt:placeholder="dd/mm/aaaa" requiredMessage="Please enter your birthdate">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:inputText></td>
+
+						<td><h:message for="birthDate" style="color:red" /></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Enter Password :" /></td>
+						<td><h:inputSecret id="password"
+								value="#{registrationController.guest.password}" required="true"
+								requiredMessage="Please enter your password" /></td>
+						<td><h:message for="password" style="color:red" /></td>
+					</tr>
+					<tr>
+						<td />
+						<td><h:commandButton value="Register"
+								action="#{registrationController.register}" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLink value="home.xhtml">Home</h:outputLink></td>
+					</tr>
+				</table>
+			</h:form>
+		</f:view>
+				</h:panelGroup>
+	</ui:define>
+
+</ui:composition>

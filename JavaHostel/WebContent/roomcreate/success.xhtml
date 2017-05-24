@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/resources/decorator.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title">Registration</ui:define>
+
+	<ui:define name="contents">
+
+
+
+		<h1>Bed registration</h1>
+		<p>Success! Bed created!</p>
+		<p>Insert bed info.</p>
+		<f:view>
+			<h:form id="regForm">
+				<table>
+					<tr>
+						<td><h:outputText value="Enter bed number:" /></td>
+						<td><h:inputText id="name" pt:placeholder="Room number"
+								value="#{roomRegistrationController.room.number}" required="true"
+								requiredMessage="Please enter your name" /></td>
+						<td><h:message for="name" style="color:red" /></td>
+					</tr>
+
+					<tr>
+						<td><h:outputLink value="home.xhtml">Home</h:outputLink></td>
+					</tr>
+				</table>
+			</h:form>
+		</f:view>
+	</ui:define>
+
+</ui:composition>

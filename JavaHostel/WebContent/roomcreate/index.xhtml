@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/resources/decorator.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="title">Registration</ui:define>
+
+	<ui:define name="contents">
+
+
+
+		<h1>Room creation</h1>
+		<p>Insert room info.</p>
+		<f:view>
+			<h:form id="roomRegForm">
+			<h:message for="beds"/>
+				<table>
+					<tr>
+						<td><h:outputText value="Enter room number:" /></td>
+						<td><h:inputText id="roomnumber" pt:placeholder="Room number"
+								value="#{registrationController.room.number}" /></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Beds in room:" /></td>
+						<td><h:selectManyListbox id="beds"  value = "#{registrationController.room.beds}" converter="#{bedConverter}">
+								<f:selectItems value="#{registrationController.beds}" var="bed" itemLabel="#{bed.number}" itemValue="#{bed}" />
+							</h:selectManyListbox></td>
+					</tr>
+					<tr>
+					<td><h:commandButton action = "#{registrationController.roomRegister}" value="Register new room"/></td>
+					</tr>
+
+					<tr>
+						<td><h:outputLink value="home.xhtml">Home</h:outputLink></td>
+					</tr>
+				</table>
+			</h:form>
+		</f:view>
+	</ui:define>
+
+</ui:composition>
